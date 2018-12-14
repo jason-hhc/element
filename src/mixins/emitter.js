@@ -1,13 +1,15 @@
 function broadcast(componentName, eventName, params) {
-  this.$children.forEach(child => {
-    var name = child.$options.componentName;
-
-    if (name === componentName) {
-      child.$emit.apply(child, [eventName].concat(params));
-    } else {
-      broadcast.apply(child, [componentName, eventName].concat([params]));
+  console.log(this.$children)
+  if(this.$children){
+    for(var i =0;i<this.$children.length;i++){
+      var name = child.$options.componentName;
+      if (name === componentName) {
+        this.$children[i].$emit.apply(this.$children[i], [eventName].concat(params));
+      } else {
+        broadcast.apply(this.$children[i], [componentName, eventName].concat([params]));
+      }
     }
-  });
+  }
 }
 export default {
   methods: {
