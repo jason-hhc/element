@@ -1,5 +1,4 @@
 function broadcast(componentName, eventName, params) {
-  console.log(this.$children)
   if(this.$children){
     for(var i =0;i<this.$children.length;i++){
       var name = child.$options.componentName;
